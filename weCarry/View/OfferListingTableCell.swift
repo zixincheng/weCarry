@@ -19,6 +19,7 @@ class OfferListingTableCell: UITableViewCell {
     @IBOutlet weak var serviceLabel3: UILabel!
     @IBOutlet weak var packageLabel1: UILabel!
     @IBOutlet weak var packageLabel2: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

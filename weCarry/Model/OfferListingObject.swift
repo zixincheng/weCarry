@@ -11,17 +11,17 @@ import Firebase
 
 class OfferListingObject: NSObject {
     
-    let pickuplocation: GeoPoint
+    //let pickuplocation: GeoPoint
     let leftWeight: String
-    let userId: String
+    let userInfo: [String: String]
     let avalibleService: [String: Bool]
     let avaliblePackage: [String: Bool]
     let travelInfo: [String: String]
     
-    init(userId:String, leftWeight:String, pickuplocation:GeoPoint, avalibleService:[String: Bool], avaliblePackage:[String: Bool], travelInfo:[String: String]) {
-        self.pickuplocation = pickuplocation;
+    init(userInfo:[String: String], leftWeight:String, avalibleService:[String: Bool], avaliblePackage:[String: Bool], travelInfo:[String: String]) {
+        //self.pickuplocation = pickuplocation;
         self.leftWeight = leftWeight;
-        self.userId = userId;
+        self.userInfo = userInfo;
         self.avalibleService = avalibleService;
         self.avaliblePackage = avaliblePackage;
         self.travelInfo = travelInfo;

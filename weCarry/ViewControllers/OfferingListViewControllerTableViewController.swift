@@ -11,7 +11,7 @@ import Firebase
 class OfferingListViewControllerTableViewController: UITableViewController {
     var db: Firestore!
     
-    var ObjectList = [OfferListingObject]()
+    var offerObjectList = [OfferListingObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,18 @@ class OfferingListViewControllerTableViewController: UITableViewController {
                 print("Error getting documents: \(error)")
             } else {
                 for document in (snapshot!.documents) {
-                    let obj = OfferListingObject(userId: document.data()["userId"] as! String, leftWeight: document.data()["leftWeight"] as! String, pickuplocation: document.data()["pickupLocation"] as! GeoPoint, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String])
-                    self.ObjectList.append(obj)
+                    let obj = OfferListingObject(userInfo: document.data()["userInfo"] as! [String: String], leftWeight: document.data()["leftWeight"] as! String, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String])
+                    
+
+                    self.offerObjectList.append(obj)
+                    
+                    
                     self.tableView.reloadData()
                 }
             }
         }
+        
+        //let userRef = self.db.collection("users").document(document.data()["userId"] as! String)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,7 +59,7 @@ class OfferingListViewControllerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ObjectList.count
+        return offerObjectList.count
     }
 
     
@@ -63,7 +69,7 @@ class OfferingListViewControllerTableViewController: UITableViewController {
         
         var numberOfAvalibleService = 0;
         var services = [String]();
-        for (service, value) in self.ObjectList[indexPath.row].avalibleService {
+        for (service, value) in self.offerObjectList[indexPath.row].avalibleService {
             if  value {
                 numberOfAvalibleService += 1;
                 services.append(service);
@@ -94,7 +100,7 @@ class OfferingListViewControllerTableViewController: UITableViewController {
         
         var numberOfAvaliblePackage = 0;
         var packages = [String]();
-        for (service, value) in self.ObjectList[indexPath.row].avaliblePackage {
+        for (service, value) in self.offerObjectList[indexPath.row].avaliblePackage {
             if  value {
                 numberOfAvaliblePackage += 1;
                 packages.append(service);
@@ -116,9 +122,13 @@ class OfferingListViewControllerTableViewController: UITableViewController {
             break
         }
         
-        cell.fromLabel?.text = (self.ObjectList[indexPath.row].travelInfo["from"])
-        cell.toLabel?.text = (self.ObjectList[indexPath.row].travelInfo["to"])
-        cell.timeLabel?.text = (self.ObjectList[indexPath.row].travelInfo["time"])
+        cell.fromLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["from"])
+        cell.toLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["to"])
+        cell.timeLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["time"])
+        
+        cell.userNameLabel.text = (self.offerObjectList[indexPath.row].userInfo["userName"])
+        
+        cell.weightLimitLabel.text = self.offerObjectList[indexPath.row].leftWeight
 
         // Configure the cell...
 

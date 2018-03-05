@@ -13,9 +13,14 @@ class LoginViewController: UIViewController{
 
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var db: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let settings = FirestoreSettings()
+        
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
     }
     
     @IBAction func loginEmail(_ sender: Any) {
@@ -39,6 +44,19 @@ class LoginViewController: UIViewController{
                     self.present(alertController, animated: true, completion: nil)
                 } else {
                     print("login successfully");
+                    let userId = (Auth.auth().currentUser?.uid)!
+                    let docRef = self.db.collection("users").document(userId)
+                    
+                    docRef.getDocument { (document, error) in
+                        if let document = document {
+                            let userinfo = UserInfoObject.init(userId:userId , email: document.data()!["email"] as! String, nickName: document.data()!["nickName"] as! String, phoneNumber: document.data()!["phoneNumber"] as! String, offerIds: document.data()!["offerIds"] as! [String], requestIds: document.data()!["requestIds"] as! [String])
+                                UserDefaults.standard.set(userId, forKey: "userId")
+                                UserDefaults.standard.set(userinfo.nickName, forKey: "nickName")
+                                UserDefaults.standard.set(userinfo.phoneNumber, forKey: "phoneNumber")
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
                     self.performSegue(withIdentifier: "loginSuccessful", sender: nil);
                 }
             }
@@ -101,6 +119,23 @@ class LoginViewController: UIViewController{
                         print("login failed" ,error );
 
                     } else {
+                        
+                        //var ref: DocumentReference? = nil
+                        self.db.collection("users").document((user?.uid)!).setData([
+                            "email": createaccountTextField.text!,
+                            "nickName":"",
+                            "offerIds":  [""],
+                            "requestIds": [""],
+                            "phoneNumber": "",
+                            "userIcon": ""
+                        ]) { err in
+                            if let err = err {
+                                print("Error adding document: \(err)")
+                            } else {
+                                print("Document added with ID: \(user?.uid)")
+                            }
+                        }
+                        
                         let alertController = UIAlertController(title: "Success", message: "Account create successfully", preferredStyle: UIAlertControllerStyle.alert)
                         
                         let action1 = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
