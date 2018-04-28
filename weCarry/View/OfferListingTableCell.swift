@@ -12,6 +12,8 @@ class OfferListingTableCell: UITableViewCell {
 
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var fromCityLabel: UILabel!
+    @IBOutlet weak var toCityLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var weightLimitLabel: UILabel!
     @IBOutlet weak var serviceLabel1: UILabel!

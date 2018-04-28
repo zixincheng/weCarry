@@ -74,22 +74,27 @@ class LoginViewController: UIViewController{
 
     @IBAction func createEmailAccount(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "创建新账户", message: "请完成以下内容", preferredStyle: UIAlertControllerStyle.alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Email Address"
+            textField.placeholder = "输入邮箱"
         }
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Password"
+            textField.placeholder = "输入密码"
         }
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Confirm Password"
+            textField.placeholder = "再次输入密码"
         }
         
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "输入昵称"
+        }
+        
+        let confirmAction = UIAlertAction(title: "完成", style: .default) { (action:UIAlertAction) in
             let createaccountTextField = alertController.textFields![0] as UITextField
             let createpassworldTextField = alertController.textFields![1] as UITextField
             let confirmPasswordTextField = alertController.textFields![2] as UITextField
+            let nickNameTextField = alertController.textFields![3] as UITextField
             
             if createpassworldTextField.text != confirmPasswordTextField.text || createpassworldTextField.text == "" || confirmPasswordTextField.text == "" {
                 let alertController2 = UIAlertController(title: "Error", message: "Password do not match or cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
@@ -123,7 +128,7 @@ class LoginViewController: UIViewController{
                         //var ref: DocumentReference? = nil
                         self.db.collection("users").document((user?.uid)!).setData([
                             "email": createaccountTextField.text!,
-                            "nickName":"",
+                            "nickName": nickNameTextField.text!,
                             "offerIds":  [""],
                             "requestIds": [""],
                             "phoneNumber": "",
@@ -150,7 +155,7 @@ class LoginViewController: UIViewController{
         }
         
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action:UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "取消", style: .default) { (action:UIAlertAction) in
             
         }
         alertController.addAction(confirmAction);

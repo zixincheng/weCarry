@@ -18,23 +18,6 @@ class OfferingListViewControllerTableViewController: UITableViewController {
         let settings = FirestoreSettings()
         
         Firestore.firestore().settings = settings
-        db = Firestore.firestore()
-        
-        db.collection("offerListing").getDocuments { (snapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                for document in (snapshot!.documents) {
-                    let obj = OfferListingObject(userInfo: document.data()["userInfo"] as! [String: String], leftWeight: document.data()["leftWeight"] as! String, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String])
-                    
-
-                    self.offerObjectList.append(obj)
-                    
-                    
-                    self.tableView.reloadData()
-                }
-            }
-        }
         
         //let userRef = self.db.collection("users").document(document.data()["userId"] as! String)
         
@@ -44,10 +27,34 @@ class OfferingListViewControllerTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        db = Firestore.firestore()
+        
+        db.collection("offerListing").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in (snapshot!.documents) {
+                    let obj = OfferListingObject(userInfo: document.data()["userInfo"] as! [String: String], leftWeight: document.data()["leftWeight"] as! String, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String])
+                    
+                    
+                    self.offerObjectList.append(obj)
+                    
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        offerObjectList.removeAll()
     }
 
     // MARK: - Table view data source
@@ -122,13 +129,15 @@ class OfferingListViewControllerTableViewController: UITableViewController {
             break
         }
         
-        cell.fromLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["from"])
-        cell.toLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["to"])
+        cell.fromLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["fromCountry"])
+        cell.toLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["toCountry"])
+        cell.fromCityLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["fromCity"])
+        cell.toCityLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["toCity"])
         cell.timeLabel?.text = (self.offerObjectList[indexPath.row].travelInfo["time"])
         
         cell.userNameLabel.text = (self.offerObjectList[indexPath.row].userInfo["userName"])
         
-        cell.weightLimitLabel.text = self.offerObjectList[indexPath.row].leftWeight
+        cell.weightLimitLabel.text = self.offerObjectList[indexPath.row].leftWeight + " KG"
 
         // Configure the cell...
 

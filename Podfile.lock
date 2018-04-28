@@ -5,7 +5,10 @@ PODS:
   - BoringSSL/Implementation (9.2):
     - BoringSSL/Interface (= 9.2)
   - BoringSSL/Interface (9.2)
+  - Crashlytics (3.10.0):
+    - Fabric (~> 1.7.3)
   - ESTabBarController-swift (2.6.1)
+  - Fabric (1.7.3)
   - Firebase/Auth (4.8.2):
     - Firebase/Core
     - FirebaseAuth (= 4.4.2)
@@ -73,14 +76,18 @@ PODS:
   - Protobuf (3.5.0)
 
 DEPENDENCIES:
+  - Crashlytics
   - ESTabBarController-swift
+  - Fabric
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
 
 SPEC CHECKSUMS:
   BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
+  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
   ESTabBarController-swift: 1e629e60bc6a87c1ea92a5309489b9f8dde15fa2
+  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
@@ -97,6 +104,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: b7509abe9296a1b6486618be0594f6aff1497af7
+PODFILE CHECKSUM: 8df60906425dd6b8b6b9a23cde42df97d7c465c6
 
 COCOAPODS: 1.4.0

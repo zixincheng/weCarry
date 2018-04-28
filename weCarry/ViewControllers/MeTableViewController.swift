@@ -9,10 +9,17 @@
 import UIKit
 import Firebase
 
-class MeTableViewController: UITableViewController {
+class MeTableViewController: UITableViewController, UITextFieldDelegate {
     var db: Firestore!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let settings = FirestoreSettings()
+        
+        Firestore.firestore().settings = settings
+        
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnNickNameLabel(_:)))
+        //nickNameLabel.addGestureRecognizer(tap)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -20,11 +27,54 @@ class MeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        db = Firestore.firestore()
+        
+        db.collection("users").document(UserDefaults.standard.string(forKey: "userId")!).getDocument { (document, error) in
+            if let document = document, document.exists {
+                //self.nickNameLabel.text = document.data()!["nickName"] as? String
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // UITextField Delegates
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Begin")
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        print("did end")
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("should begin")
+        return true;
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        print("clear")
+        return true;
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        print("should end")
+        return true;
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("Begin")
+        return true;
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
+    
+    
 
     // MARK: - Table view data source
 //
@@ -92,6 +142,50 @@ class MeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+//    @objc func tapOnNickNameLabel(_ sender:UITapGestureRecognizer) {
+//        let alertController = UIAlertController(title: "Alert", message: "Change the nick name", preferredStyle: UIAlertControllerStyle.alert)
+//
+//        alertController.addTextField { (textField : UITextField!) -> Void in
+//            textField.placeholder = "Enter Nick Name"
+//        }
+//
+//        let confirmAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+//            let nickNameTextField = alertController.textFields![0] as UITextField
+//
+//            let userIdref = self.db.collection("users").document(UserDefaults.standard.string(forKey: "userId")!)
+//
+//            userIdref.getDocument { (document, error) in
+//                if let document = document, document.exists {
+//
+//                    userIdref.updateData([
+//                        "nickName": nickNameTextField.text!
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error adding document: \(err)")
+//                        } else {
+//                            print("Document updated");
+//                            self.navigationController?.popViewController(animated: true)
+//                        }
+//                    }
+//
+//                } else {
+//                    print("Document does not exist")
+//                }
+//
+//            }
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action:UIAlertAction) in
+//
+//        }
+//        alertController.addAction(confirmAction);
+//        alertController.addAction(cancelAction);
+//
+//        self.present(alertController, animated: true, completion: nil)
+//
+//    }
+
     @IBAction func logoutBtnPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {

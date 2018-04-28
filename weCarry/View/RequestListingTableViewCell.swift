@@ -17,6 +17,8 @@ class RequestListingTableViewCell: UITableViewCell {
     @IBOutlet weak var timeUpRangeLabel: UILabel!
     @IBOutlet weak var timeLowRangeLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var fromCityLabel: UILabel!
+    @IBOutlet weak var toCityLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

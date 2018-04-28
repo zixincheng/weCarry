@@ -20,5 +20,7 @@ pod 'Firebase/Core’
 pod 'Firebase/Auth’
 pod 'Firebase/Firestore'
 pod "ESTabBarController-swift"
+pod 'Fabric'
+pod 'Crashlytics'
 
 end

@@ -20,6 +20,14 @@ class RequestingListTableViewController: UITableViewController {
         let settings = FirestoreSettings()
         
         Firestore.firestore().settings = settings
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         db = Firestore.firestore()
         
         db.collection("requestListing").getDocuments { (snapshot, error) in
@@ -27,18 +35,17 @@ class RequestingListTableViewController: UITableViewController {
                 print("Error getting documents: \(error)")
             } else {
                 for document in (snapshot!.documents) {
-                    let obj = RequestListingObject(userInfo: document.data()["userInfo"] as! [String: String], pickuplocation: document.data()["pickupLocation"] as! GeoPoint, serviceType: document.data()["serviceType"] as! String, packageType: document.data()["packageType"] as! String , travelInfo: document.data()["travelInfo"] as! [String : String], itemInfo: document.data()["itemInfo"] as! [String : String])
+                    let obj = RequestListingObject(userInfo: document.data()["userInfo"] as! [String: String], serviceType: document.data()["serviceType"] as! String, packageType: document.data()["packageType"] as! String , travelInfo: document.data()["travelInfo"] as! [String : String], itemInfo: document.data()["itemInfo"] as! [String : String])
                     self.ObjectList.append(obj)
-
+                    
                     self.tableView.reloadData()
                 }
             }
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ObjectList.removeAll()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,13 +71,15 @@ class RequestingListTableViewController: UITableViewController {
         let cell:RequestListingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "RequestListingTableViewCell", for: indexPath) as! RequestListingTableViewCell
         
         cell.userNameLabel.text = (self.ObjectList[indexPath.row].userInfo["userName"])
-        cell.fromLabel.text = (self.ObjectList[indexPath.row].travelInfo["from"])
-        cell.toLabel.text = (self.ObjectList[indexPath.row].travelInfo["to"])
-        cell.timeUpRangeLabel.text = (self.ObjectList[indexPath.row].travelInfo["upperLimitTime"])
-        cell.timeLowRangeLabel.text = (self.ObjectList[indexPath.row].travelInfo["lowerLimitTime"])
+        cell.fromLabel.text = (self.ObjectList[indexPath.row].travelInfo["fromCountry"])
+        cell.toLabel.text = (self.ObjectList[indexPath.row].travelInfo["toCountry"])
+        cell.fromCityLabel?.text = (self.ObjectList[indexPath.row].travelInfo["fromCity"])
+        cell.toCityLabel?.text = (self.ObjectList[indexPath.row].travelInfo["toCity"])
+        cell.timeUpRangeLabel.text = (self.ObjectList[indexPath.row].travelInfo["latestLimitTime"])
+        cell.timeLowRangeLabel.text = (self.ObjectList[indexPath.row].travelInfo["earliestLimitTIme"])
         cell.serviceTypeLabel.text = self.ObjectList[indexPath.row].serviceType
         cell.packageTypeLabel.text = self.ObjectList[indexPath.row].packageType
-        cell.weightLabel.text = (self.ObjectList[indexPath.row].itemInfo["weight"])
+        cell.weightLabel.text = (self.ObjectList[indexPath.row].itemInfo["weight"])! + " KG"
 
         // Configure the cell...
 

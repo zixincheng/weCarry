@@ -25,29 +25,51 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     
     var fromCountryPicker: UIPickerView! = UIPickerView()
     var toCountryPicker: UIPickerView! = UIPickerView()
+    var fromCityPicker: UIPickerView! = UIPickerView()
+    var toCityPicker: UIPickerView! = UIPickerView()
     var datePicker: UIDatePicker! = UIDatePicker()
     var db: Firestore!
     
-    let country_picker_values = ["中国", "美国", "加拿大", "日本", "韩国", "英国", "法国", "意大利"]
+    var allPickerInfo: NSDictionary = [:]
+    var countryArray = Array<String>()
+    var cityArray = Array<String>()
+    var currentCityArray = Array<String>()
+    
+    enum PICKERS {
+        case FROMCOUNTRY
+        case TOCOUNTRY
+        case FROMCITY
+        case TOCITY
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // SET UP PICKERS VALUE
         self.fromCountryPicker.dataSource = self
         self.fromCountryPicker.delegate = self
-        self.fromCountryPicker.tag = 1
+        self.fromCountryPicker.tag = PICKERS.FROMCOUNTRY.hashValue;
         self.toCountryPicker.dataSource = self
         self.toCountryPicker.delegate = self
-        self.toCountryPicker.tag = 2
+        self.toCountryPicker.tag = PICKERS.TOCOUNTRY.hashValue;
+        self.fromCityPicker.dataSource = self
+        self.fromCityPicker.delegate = self
+        self.fromCityPicker.tag = PICKERS.FROMCITY.hashValue;
+        self.toCityPicker.dataSource = self
+        self.toCityPicker.delegate = self
+        self.toCityPicker.tag = PICKERS.TOCITY.hashValue;
+        
+        self.fromCountryPicker.selectRow(1, inComponent: 0, animated: true)
+        self.toCountryPicker.selectRow(0, inComponent: 0, animated: true)
+        self.fromCountryPicker.reloadAllComponents()
+        
+        getAllPickerInfo();
     
         self.datePicker.locale = NSLocale.init(localeIdentifier: "zh-Hans") as Locale
         self.datePicker.datePickerMode = UIDatePickerMode.date
         
         self.datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: UIControlEvents.valueChanged)
-        
-        
-        
-        //self.fromCountryPicker.backgroundColor = .white
         
         self.fromCountryPicker.showsSelectionIndicator = true
         
@@ -109,32 +131,57 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.country_picker_values.count
+        switch (component)
+        {
+            case 0:
+                return self.countryArray.count
+            case 1:
+                return self.currentCityArray.count
+        default:
+            return 0
+        }
     }
     
     
     //MARK: Delegates
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.country_picker_values[row]
+        if (component == 0) {
+            return self.countryArray[row];
+        } else {
+            return self.currentCityArray[row];
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if (pickerView.tag == 1) {
-            print("from picker")
-            self.fromCountryTextField.text = self.country_picker_values[row]
+        if (component == 0) {
+            print("Country picker")
+            let currentSelectedCounty = self.countryArray[row]
+            self.currentCityArray = self.allPickerInfo.object(forKey: currentSelectedCounty) as! [String]
+            pickerView.selectRow(0, inComponent: 1, animated: true)
+            pickerView.reloadAllComponents()
+            if (pickerView.tag == PICKERS.FROMCOUNTRY.hashValue) {
+                self.fromCountryTextField.text = self.countryArray[row]
+            } else if (pickerView.tag == PICKERS.TOCOUNTRY.hashValue) {
+                self.toCountryTextField.text = self.countryArray[row]
+            }
         } else {
-            print("to picker")
-            self.toCountryTextField.text = self.country_picker_values[row]
+            print("City picker")
+            if (pickerView.tag == PICKERS.FROMCOUNTRY.hashValue) {
+                self.fromCityTextField.text = self.currentCityArray[row]
+            } else if (pickerView.tag == PICKERS.TOCOUNTRY.hashValue) {
+                self.toCityTextField.text = self.currentCityArray[row]
+            }
         }
     }
     
     // UITextField Delegates
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Begin")
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
     }
@@ -156,19 +203,52 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     }
     @IBAction func doneBtnPressed(_ sender: Any) {
         
-        var ref: DocumentReference? = nil
-        ref = db.collection("offerListing").addDocument(data: [
-            "avaliblePackage": ["可带散件": onebulkBtn.isSelected, "可带整箱": oneCaseBtn.isSelected],
-            "avalibleService": ["代买物品": buyBtn.isSelected, "代免税店": taxFreeBtn.isSelected, "代收淘宝": taobaoBtn.isSelected],
-            "leftWeight":  leftWeightTextFiled.text ?? "",
-            "travelInfo": ["from": fromCountryTextField.text, "to": toCountryTextField.text, "time": dateTextField.text],
-            "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
+        if (self.fromCountryTextField.text == "" || self.toCountryTextField.text == "" || self.toCityTextField.text == "" || self.fromCityTextField.text == "" || self.dateTextField.text == "" || self.leftWeightTextFiled.text == "") {
+            let alertController = UIAlertController(title: "Error", message: "Required field cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
             }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            var ref: DocumentReference? = nil
+            ref = db.collection("offerListing").addDocument(data: [
+                "avaliblePackage": ["可带散件": onebulkBtn.isSelected, "可带整箱": oneCaseBtn.isSelected],
+                "avalibleService": ["代买物品": buyBtn.isSelected, "代免税店": taxFreeBtn.isSelected, "代收淘宝": taobaoBtn.isSelected],
+                "leftWeight":  leftWeightTextFiled.text ?? "",
+                "travelInfo": ["fromCountry": fromCountryTextField.text, "fromCity": fromCityTextField.text, "toCountry": toCountryTextField.text, "toCity": toCityTextField.text, "time": dateTextField.text],
+                "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    let userIdref = self.db.collection("users").document(UserDefaults.standard.string(forKey: "userId")!)
+                    
+                     userIdref.getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            var offerIdArray = document.data()!["offerIds"] as! [String]
+                            
+                            offerIdArray.append(ref!.documentID);
+                            
+                            userIdref.updateData([
+                                "offerIds": offerIdArray
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    print("Document updated");
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                            
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
+                }
+            }
+            
         }
     }
     
@@ -210,4 +290,17 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
         }
     }
     
+    func getAllPickerInfo(){
+        
+        //Load content of Info.plist into resourceFileDictionary dictionary
+        if let path = Bundle.main.path(forResource: "CountryCity", ofType: "plist") {
+            self.allPickerInfo = NSDictionary(contentsOfFile: path)!
+        }
+        if (self.allPickerInfo.count != 0) {
+            self.countryArray = self.allPickerInfo.allKeys as! [String]
+            self.currentCityArray = self.allPickerInfo.object(forKey: "中国") as! [String]
+        }
+
+    }
+
 }
