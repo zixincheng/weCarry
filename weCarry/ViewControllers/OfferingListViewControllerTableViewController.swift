@@ -36,7 +36,7 @@ class OfferingListViewControllerTableViewController: UITableViewController {
                 print("Error getting documents: \(error)")
             } else {
                 for document in (snapshot!.documents) {
-                    let obj = OfferListingObject(userInfo: document.data()["userInfo"] as! [String: String], leftWeight: document.data()["leftWeight"] as! String, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String])
+                    let obj = OfferListingObject(userInfo: document.data()["userInfo"] as! [String: String], leftWeight: document.data()["leftWeight"] as! String, avalibleService: document.data()["avalibleService"] as! [String : Bool], avaliblePackage: document.data()["avaliblePackage"] as! [String: Bool] , travelInfo: document.data()["travelInfo"] as! [String : String], phoneNumber: document.data()["phoneNumber"] as! String, weChat: document.data()["weChat"] as! String, comments: document.data()["comments"] as! String)
                     
                     
                     self.offerObjectList.append(obj)

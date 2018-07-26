@@ -1,16 +1,16 @@
 //
-//  CreateNewOfferTableViewController.swift
+//  EditOfferTableViewController.swift
 //  weCarry
 //
-//  Created by zixin cheng on 2018-02-21.
+//  Created by zixin cheng on 2018-04-30.
 //  Copyright © 2018 zixin cheng. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate, UITextViewDelegate{
-
+class EditOfferTableViewController: UITableViewController,  UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate {
+    
     @IBOutlet weak var fromCountryTextField: UITextField!
     @IBOutlet weak var toCountryTextField: UITextField!
     @IBOutlet weak var fromCityTextField: UITextField!
@@ -22,9 +22,6 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     @IBOutlet weak var oneCaseBtn: UIButton!
     @IBOutlet weak var onebulkBtn: UIButton!
     @IBOutlet weak var leftWeightTextFiled: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var weChatTextField: UITextField!
-    @IBOutlet weak var commentsTextView: UITextView!
     
     var fromCountryPicker: UIPickerView! = UIPickerView()
     var toCountryPicker: UIPickerView! = UIPickerView()
@@ -45,8 +42,12 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
         case TOCITY
     }
     
+    var selectedObj = OfferListingObject(userInfo: ["" : ""], leftWeight: "", avalibleService: ["" : true], avaliblePackage: ["" : true], travelInfo: ["" : ""], phoneNumber: "", weChat: "", comments: "")
+    var selectedOfferId : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         // SET UP PICKERS VALUE
@@ -68,7 +69,7 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
         self.fromCountryPicker.reloadAllComponents()
         
         getAllPickerInfo();
-    
+        
         self.datePicker.locale = NSLocale.init(localeIdentifier: "zh-Hans") as Locale
         self.datePicker.datePickerMode = UIDatePickerMode.date
         
@@ -97,14 +98,34 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
         self.fromCityTextField.delegate = self;
         self.toCityTextField.delegate = self;
         self.leftWeightTextFiled.delegate = self;
-        self.weChatTextField.delegate = self;
-        self.phoneTextField.delegate = self;
-        self.commentsTextView.delegate = self;
         
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+        
+        self.fromCountryTextField.text = self.selectedObj.travelInfo["fromCountry"]
+        self.fromCityTextField.text = self.selectedObj.travelInfo["fromCity"]
+        self.toCountryTextField.text = self.selectedObj.travelInfo["toCountry"]
+        self.toCityTextField.text = self.selectedObj.travelInfo["toCity"]
+        self.dateTextField.text = self.selectedObj.travelInfo["time"]
+        self.leftWeightTextFiled.text = self.selectedObj.leftWeight
+        
+        self.buyBtn.isSelected = self.selectedObj.avalibleService["代买物品"]!
+        self.taxFreeBtn.isSelected = self.selectedObj.avalibleService["代免税店"]!
+        self.taobaoBtn.isSelected = self.selectedObj.avalibleService["代收淘宝"]!
+        self.onebulkBtn.isSelected = self.selectedObj.avaliblePackage["可带散件"]!
+        self.oneCaseBtn.isSelected = self.selectedObj.avaliblePackage["可带整箱"]!
+        
 
+        //set up all picker values
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.init(identifier: "zh-Hans")
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        let datestr = self.selectedObj.travelInfo["time"]
+        let dateObj = dateFormatter.date(from: datestr!)
+        
+        self.datePicker.date = dateObj!
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -112,12 +133,12 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @objc func donePicker(){
         
         self.fromCountryTextField.resignFirstResponder();
@@ -139,14 +160,14 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch (component)
         {
-            case 0:
-                return self.countryArray.count
-            case 1:
-                return self.currentCityArray.count
+        case 0:
+            return self.countryArray.count
+        case 1:
+            return self.currentCityArray.count
         default:
             return 0
         }
@@ -209,7 +230,7 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
     }
     @IBAction func doneBtnPressed(_ sender: Any) {
         
-        if (self.fromCountryTextField.text == "" || self.toCountryTextField.text == "" || self.toCityTextField.text == "" || self.fromCityTextField.text == "" || self.dateTextField.text == "" || self.leftWeightTextFiled.text == "" || self.phoneTextField.text == "" || self.weChatTextField.text == "") {
+        if (self.fromCountryTextField.text == "" || self.toCountryTextField.text == "" || self.toCityTextField.text == "" || self.fromCityTextField.text == "" || self.dateTextField.text == "" || self.leftWeightTextFiled.text == "") {
             let alertController = UIAlertController(title: "Error", message: "Required field cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
             }
@@ -217,47 +238,29 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
-            var ref: DocumentReference? = nil
-            ref = db.collection("offerListing").addDocument(data: [
-                "avaliblePackage": ["可带散件": onebulkBtn.isSelected, "可带整箱": oneCaseBtn.isSelected],
-                "avalibleService": ["代买物品": buyBtn.isSelected, "代免税店": taxFreeBtn.isSelected, "代收淘宝": taobaoBtn.isSelected],
-                "leftWeight":  leftWeightTextFiled.text ?? "",
-                "travelInfo": ["fromCountry": fromCountryTextField.text, "fromCity": fromCityTextField.text, "toCountry": toCountryTextField.text, "toCity": toCityTextField.text, "time": dateTextField.text],
-                "weChat": weChatTextField.text ?? "",
-                "phoneNumber" : phoneTextField.text ?? "",
-                "comments" : commentsTextView.text ?? "",
-                "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                    let userIdref = self.db.collection("users").document(UserDefaults.standard.string(forKey: "userId")!)
-                    
-                     userIdref.getDocument { (document, error) in
-                        if let document = document, document.exists {
-                            var offerIdArray = document.data()!["offerIds"] as! [String]
-                            
-                            offerIdArray.append(ref!.documentID);
-                            
-                            userIdref.updateData([
-                                "offerIds": offerIdArray
-                            ]) { err in
-                                if let err = err {
-                                    print("Error adding document: \(err)")
-                                } else {
-                                    print("Document updated");
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            }
-                            
+            let offerRef = self.db.collection("offerListing").document(self.selectedOfferId)
+            offerRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    offerRef.updateData([
+                        "avaliblePackage": ["可带散件": self.onebulkBtn.isSelected, "可带整箱": self.oneCaseBtn.isSelected],
+                        "avalibleService": ["代买物品": self.buyBtn.isSelected, "代免税店": self.taxFreeBtn.isSelected, "代收淘宝": self.taobaoBtn.isSelected],
+                        "leftWeight":  self.leftWeightTextFiled.text ?? "",
+                        "travelInfo": ["fromCountry": self.fromCountryTextField.text, "fromCity": self.fromCityTextField.text, "toCountry": self.toCountryTextField.text, "toCity": self.toCityTextField.text, "time": self.dateTextField.text],
+                        "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
                         } else {
                             print("Document does not exist")
+                            
+                            self.navigationController?.popViewController(animated: true)
                         }
                     }
+                    
+                } else {
+                    print("Document does not exist")
                 }
             }
-            
         }
     }
     
@@ -309,7 +312,62 @@ class CreateNewOfferTableViewController: UITableViewController, UIPickerViewDele
             self.countryArray = self.allPickerInfo.allKeys as! [String]
             self.currentCityArray = self.allPickerInfo.object(forKey: "中国") as! [String]
         }
+        
+    }
+
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }

@@ -1,16 +1,15 @@
 //
-//  CreateNewRequestTableViewController.swift
+//  EditRequestTableViewController.swift
 //  weCarry
 //
-//  Created by zixin cheng on 2018-02-21.
+//  Created by zixin cheng on 2018-04-30.
 //  Copyright © 2018 zixin cheng. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate, UITextViewDelegate {
-    
+class EditRequestTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate{
     @IBOutlet weak var itemNameTextfield: UITextField!
     @IBOutlet weak var itemWeightTextField: UITextField!
     @IBOutlet weak var itemSizeTextField: UITextField!
@@ -26,9 +25,6 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet weak var buyBtn: UIButton!
     @IBOutlet weak var oneCaseBtn: UIButton!
     @IBOutlet weak var bulkBtn: UIButton!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var weChatTextField: UITextField!
-    @IBOutlet weak var commentsTextView: UITextView!
     
     var fromCountryPicker: UIPickerView! = UIPickerView()
     var toCountryPicker: UIPickerView! = UIPickerView()
@@ -50,9 +46,12 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
         case TOCITY
     }
     
+    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""])
+    var selectedRequestId : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // SET UP PICKERS VALUE
         self.fromCountryPicker.dataSource = self
         self.fromCountryPicker.delegate = self
@@ -111,9 +110,6 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
         self.cityFromTextField.delegate = self;
         self.cityToTextField.delegate = self;
         self.itemWeightTextField.delegate = self;
-        self.weChatTextField.delegate = self;
-        self.phoneTextField.delegate = self;
-        self.commentsTextView.delegate = self;
         
         itemNameTextfield.delegate = self;
         itemSizeTextField.delegate = self;
@@ -122,6 +118,51 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+        
+        
+        self.countryFromTextField.text = self.selectedObj.travelInfo["fromCountry"]
+        self.cityFromTextField.text = self.selectedObj.travelInfo["fromCity"]
+        self.countryToTextField.text = self.selectedObj.travelInfo["toCountry"]
+        self.cityToTextField.text = self.selectedObj.travelInfo["toCity"]
+        self.dateEarliestTextField.text = self.selectedObj.travelInfo["earliestLimitTIme"]
+        self.dateLatestTextField.text = self.selectedObj.travelInfo["latestLimitTime"]
+        self.itemWeightTextField.text = self.selectedObj.itemInfo["weight"]
+        self.itemNameTextfield.text = self.selectedObj.itemInfo["generalInfo"]
+        self.itemSizeTextField.text = self.selectedObj.itemInfo["size"]
+        
+        let avalibleService = self.selectedObj.serviceType
+        let avaliblePackage = self.selectedObj.packageType
+        
+        if (avaliblePackage == "散件") {
+            self.bulkBtn.isSelected = true;
+        } else if(avaliblePackage == "整箱") {
+            self.oneCaseBtn.isSelected = true;
+        }
+        
+        if (avalibleService == "代买物品") {
+            self.buyBtn.isSelected = true
+        } else if(avalibleService == "代免税店"){
+            self.taxFreeBtn.isSelected = true
+        } else if (avalibleService == "代收淘宝") {
+            self.taobaoBtn.isSelected = true;
+        }
+        
+        
+        //set up all picker values
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.init(identifier: "zh-Hans")
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        let dateearlystr = self.selectedObj.travelInfo["earliestLimitTIme"]
+        let dateearlyobj = dateFormatter.date(from: dateearlystr!)
+        
+        self.dateEarliestPicker.date = dateearlyobj!
+        
+        let datelateststr = self.selectedObj.travelInfo["latestLimitTime"]
+        let datelatestobj = dateFormatter.date(from: datelateststr!)
+        
+        self.dateLatestPicker.date = datelatestobj!
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -224,7 +265,7 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
     }
     @IBAction func doneBtnPressed(_ sender: Any) {
         
-        if (self.countryFromTextField.text == "" || self.countryToTextField.text == "" || self.cityToTextField.text == "" || self.cityFromTextField.text == "" || self.dateEarliestTextField.text == "" || self.dateLatestTextField.text == "" || self.itemNameTextfield.text == "" || self.itemSizeTextField.text == "" || self.itemWeightTextField.text == "" || self.phoneTextField.text == "" || self.weChatTextField.text == "") {
+        if (self.countryFromTextField.text == "" || self.countryToTextField.text == "" || self.cityToTextField.text == "" || self.cityFromTextField.text == "" || self.dateEarliestTextField.text == "" || self.dateLatestTextField.text == "" || self.itemNameTextfield.text == "" || self.itemSizeTextField.text == "" || self.itemWeightTextField.text == "") {
             let alertController = UIAlertController(title: "Error", message: "Required field cannot be empty", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
             }
@@ -246,45 +287,28 @@ class CreateNewRequestTableViewController: UITableViewController, UIPickerViewDe
             } else if (oneCaseBtn.isSelected) {
                 avaliblePackage = "整箱"
             }
-            var ref: DocumentReference? = nil
-            ref = db.collection("requestListing").addDocument(data: [
-                "packageType": avaliblePackage,
-                "serviceType":availableService,
-                "itemInfo":  ["weight": itemWeightTextField.text, "size": itemSizeTextField.text, "generalInfo": itemNameTextfield.text],
-                "travelInfo": ["fromCountry": countryFromTextField.text, "fromCity": cityFromTextField.text, "toCountry": countryToTextField.text, "toCity": cityToTextField.text, "latestLimitTime": dateLatestTextField.text, "earliestLimitTIme": dateEarliestTextField.text],
-                "weChat": weChatTextField.text ?? "",
-                "phoneNumber" : phoneTextField.text ?? "",
-                "comments" : commentsTextView.text ?? "",
-                "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                    
-                    let userIdref = self.db.collection("users").document(UserDefaults.standard.string(forKey: "userId")!)
-                    
-                    userIdref.getDocument { (document, error) in
-                        if let document = document, document.exists {
-                            var requestIdArray = document.data()!["requestIds"] as! [String]
-                            
-                            requestIdArray.append(ref!.documentID);
-                            
-                            userIdref.updateData([
-                                "requestIds": requestIdArray
-                            ]) { err in
-                                if let err = err {
-                                    print("Error adding document: \(err)")
-                                } else {
-                                    print("Document updated");
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            }
-                            
+            
+            let requestRef = self.db.collection("requestListing").document(self.selectedRequestId)
+            requestRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    requestRef.updateData([
+                       "packageType": avaliblePackage,
+                       "serviceType":availableService,
+                       "itemInfo":  ["weight": self.itemWeightTextField.text, "size": self.itemSizeTextField.text, "generalInfo": self.itemNameTextfield.text],
+                       "travelInfo": ["fromCountry": self.countryFromTextField.text, "fromCity": self.cityFromTextField.text, "toCountry": self.countryToTextField.text, "toCity": self.cityToTextField.text, "latestLimitTime": self.dateLatestTextField.text, "earliestLimitTIme": self.dateEarliestTextField.text],
+                       "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
+                    ]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
                         } else {
                             print("Document does not exist")
+                            
+                            self.navigationController?.popViewController(animated: true)
                         }
                     }
+                    
+                } else {
+                    print("Document does not exist")
                 }
             }
         }

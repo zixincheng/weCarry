@@ -20,6 +20,8 @@
 		949DF8372060C6E700509338 /* PSCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 949DF8352060C6E600509338 /* PSCityPickerView.m */; };
 		949DF839208706D900509338 /* PersonalRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949DF838208706D900509338 /* PersonalRequestTableViewController.swift */; };
 		949DF83B208706EC00509338 /* PersonalOfferTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949DF83A208706EC00509338 /* PersonalOfferTableViewController.swift */; };
+		94F31D2720983418009AAF4F /* EditOfferTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F31D2620983418009AAF4F /* EditOfferTableViewController.swift */; };
+		94F31D292098342B009AAF4F /* EditRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F31D282098342B009AAF4F /* EditRequestTableViewController.swift */; };
 		9BCD5B8020295B3B009314CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD5B7F20295B3B009314CD /* AppDelegate.swift */; };
 		9BCD5B8520295B3B009314CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD5B8320295B3B009314CD /* Main.storyboard */; };
 		9BCD5B8720295B3B009314CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD5B8620295B3B009314CD /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		949DF8362060C6E700509338 /* PSCityPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCityPickerView.h; sourceTree = "<group>"; };
 		949DF838208706D900509338 /* PersonalRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRequestTableViewController.swift; sourceTree = "<group>"; };
 		949DF83A208706EC00509338 /* PersonalOfferTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalOfferTableViewController.swift; sourceTree = "<group>"; };
+		94F31D2620983418009AAF4F /* EditOfferTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOfferTableViewController.swift; sourceTree = "<group>"; };
+		94F31D282098342B009AAF4F /* EditRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRequestTableViewController.swift; sourceTree = "<group>"; };
 		9BCD5B7C20295B3B009314CD /* weCarry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weCarry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BCD5B7F20295B3B009314CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BCD5B8420295B3B009314CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				942A4997204A69CF009032F4 /* MeTableViewController.swift */,
 				949DF838208706D900509338 /* PersonalRequestTableViewController.swift */,
 				949DF83A208706EC00509338 /* PersonalOfferTableViewController.swift */,
+				94F31D2620983418009AAF4F /* EditOfferTableViewController.swift */,
+				94F31D282098342B009AAF4F /* EditRequestTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 				9BCD5B7A20295B3B009314CD /* Resources */,
 				9DFDC43E764340FE8CC7A0CC /* [CP] Embed Pods Frameworks */,
 				F3191C6375C93895E0DB5BBA /* [CP] Copy Pods Resources */,
+				949DF83C209429C200509338 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -475,6 +482,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		949DF83C209429C200509338 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 933ebcb0d9673ae1c4c102610f9e157cd6bf5019 dc6ac498694d51293e464475d68b6449c925f9348ac5091efff2e80ba188d8bc";
+		};
 		9DFDC43E764340FE8CC7A0CC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -592,6 +612,7 @@
 				942A498B203E8D13009032F4 /* CreateNewRequestTableViewController.swift in Sources */,
 				9BCD5B8020295B3B009314CD /* AppDelegate.swift in Sources */,
 				942A497F20355A14009032F4 /* RequestingListTableViewController.swift in Sources */,
+				94F31D292098342B009AAF4F /* EditRequestTableViewController.swift in Sources */,
 				942A497D20355710009032F4 /* OfferingListViewControllerTableViewController.swift in Sources */,
 				942A49862036AB73009032F4 /* RequestListingTableViewCell.swift in Sources */,
 				942A4989203E8D01009032F4 /* CreateNewOfferTableViewController.swift in Sources */,
@@ -600,6 +621,7 @@
 				9BCD5BBF202B90D2009314CD /* OfferListingObject.swift in Sources */,
 				9BCD5BC3202BA181009314CD /* OfferListingTableCell.swift in Sources */,
 				949DF83B208706EC00509338 /* PersonalOfferTableViewController.swift in Sources */,
+				94F31D2720983418009AAF4F /* EditOfferTableViewController.swift in Sources */,
 				942A49832036A236009032F4 /* RequestListingObject.swift in Sources */,
 				942A4998204A69CF009032F4 /* MeTableViewController.swift in Sources */,
 				949DF839208706D900509338 /* PersonalRequestTableViewController.swift in Sources */,
@@ -773,6 +795,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRJ7GCEGVH;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = weCarry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zixincheng.weCarry.weCarry;
@@ -793,6 +816,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SRJ7GCEGVH;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = weCarry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zixincheng.weCarry.weCarry;

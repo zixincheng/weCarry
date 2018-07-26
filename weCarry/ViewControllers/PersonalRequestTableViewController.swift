@@ -14,6 +14,13 @@ class PersonalRequestTableViewController: UITableViewController {
     var db: Firestore!
     
     var ObjectList = [RequestListingObject]()
+    var requestIds = [String]()
+    
+    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""])
+    
+    var selectedRequestId : String = ""
+    var deletedRequestId : String = ""
+    var deleteIndexPath: NSIndexPath? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +53,7 @@ class PersonalRequestTableViewController: UITableViewController {
                                         if let request = request, request.exists {
                                             let obj = RequestListingObject(userInfo: request.data()!["userInfo"] as! [String: String], serviceType: request.data()!["serviceType"] as! String, packageType: request.data()!["packageType"] as! String , travelInfo: request.data()!["travelInfo"] as! [String : String], itemInfo: request.data()!["itemInfo"] as! [String : String])
                                                 self.ObjectList.append(obj)
+                                                self.requestIds.append(id)
                                                 
                                                 self.tableView.reloadData()
                                         }
@@ -58,6 +66,10 @@ class PersonalRequestTableViewController: UITableViewController {
                             }
             
                         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ObjectList.removeAll()
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,15 +116,74 @@ class PersonalRequestTableViewController: UITableViewController {
         return 175
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedObj = self.ObjectList[indexPath.row]
+        selectedRequestId = self.requestIds[indexPath.row]
+        performSegue(withIdentifier: "editRequestSegue", sender: self)
     }
-    */
+    
+    func confirmDelete() {
+        let alert = UIAlertController(title: "删除提供记录", message: "您确定要永久删除此条记录嘛?", preferredStyle: .actionSheet)
+        
+        let DeleteAction = UIAlertAction(title: "确定", style: .destructive, handler: handleDeletePlanet)
+        let CancelAction = UIAlertAction(title: "取消", style: .cancel, handler: cancelDeletePlanet)
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        alert.popoverPresentationController?.sourceView = self.view
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func handleDeletePlanet(alertAction: UIAlertAction!) -> Void {
+        if let indexPath = self.deleteIndexPath {
+            tableView.beginUpdates()
+            db = Firestore.firestore()
+            db.collection("requestListing").document(self.deletedRequestId).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    self.requestIds.remove(at: (self.deleteIndexPath?.row)!)
+                    self.ObjectList.remove(at: (self.deleteIndexPath?.row)!)
+                    // Note that indexPath is wrapped in an array:  [indexPath]
+                    self.tableView.deleteRows(at: [indexPath as IndexPath], with: .automatic)
+                    
+                    self.deletedRequestId = ""
+                    self.deleteIndexPath = nil
+                    
+                    self.tableView.endUpdates()
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    }
+    
+    func cancelDeletePlanet(alertAction: UIAlertAction!) {
+        self.deletedRequestId = ""
+        self.deleteIndexPath = nil
+    }
+    
+    
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.deletedRequestId =  self.requestIds[indexPath.row]
+            self.deleteIndexPath = indexPath as NSIndexPath
+            confirmDelete()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -149,14 +220,16 @@ class PersonalRequestTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editRequestSegue" {
+            
+            let editRequestViewController = segue.destination as! EditRequestTableViewController
+            editRequestViewController.selectedObj = self.selectedObj;
+            editRequestViewController.selectedRequestId = self.selectedRequestId;
+            
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
