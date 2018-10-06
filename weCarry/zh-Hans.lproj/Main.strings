@@ -1,0 +1,597 @@
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "0Ga-Da-WiL"; */
+"0Ga-Da-WiL.headerTitle" = "联系方式";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "0M1-nJ-s7D"; */
+"0M1-nJ-s7D.placeholder" = "城市";
+
+/* Class = "UIButton"; normalTitle = "散件"; ObjectID = "0ej-NI-K12"; */
+"0ej-NI-K12.normalTitle" = "散件";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "0et-o9-B4H"; */
+"0et-o9-B4H.placeholder" = "点击选择日期";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "0ih-rP-GmY"; */
+"0ih-rP-GmY.placeholder" = "城市";
+
+/* Class = "UITextField"; placeholder = "长x宽x高"; ObjectID = "11u-hn-RH0"; */
+"11u-hn-RH0.placeholder" = "长x宽x高";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "134-Em-ywI"; */
+"134-Em-ywI.headerTitle" = "备注";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "1a2-Zl-8wJ"; */
+"1a2-Zl-8wJ.placeholder" = "国家";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "1of-DD-KmI"; */
+"1of-DD-KmI.placeholder" = "国家";
+
+/* Class = "UIButton"; normalTitle = "散件"; ObjectID = "1zD-Tj-mYT"; */
+"1zD-Tj-mYT.normalTitle" = "散件";
+
+/* Class = "UITextField"; placeholder = "长x宽x高"; ObjectID = "27L-jA-84i"; */
+"27L-jA-84i.placeholder" = "长x宽x高";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "2Bq-Bq-skL"; */
+"2Bq-Bq-skL.placeholder" = "点击选择日期";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "2fD-Ml-efC"; */
+"2fD-Ml-efC.placeholder" = "城市";
+
+/* Class = "UILabel"; text = "体积："; ObjectID = "2fr-ME-wk1"; */
+"2fr-ME-wk1.text" = "体积：";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "2qX-7j-Lrr"; */
+"2qX-7j-Lrr.placeholder" = "城市";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "2vq-jO-Ozi"; */
+"2vq-jO-Ozi.normalTitle" = "代收淘宝";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "3E7-hP-2Zu"; */
+"3E7-hP-2Zu.text" = "从";
+
+/* Class = "UILabel"; text = "体积："; ObjectID = "417-op-foB"; */
+"417-op-foB.text" = "体积：";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "430-en-VUl"; */
+"430-en-VUl.text" = "电话：";
+
+/* Class = "UIButton"; normalTitle = "forget password"; ObjectID = "4KX-Vm-qWT"; */
+"4KX-Vm-qWT.normalTitle" = "forget password";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "4Sm-C7-Tjp"; */
+"4Sm-C7-Tjp.title" = "Map";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "4se-MZ-Nfi"; */
+"4se-MZ-Nfi.normalTitle" = "代买物品";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "5Ki-o2-8K1"; */
+"5Ki-o2-8K1.text" = "从";
+
+/* Class = "UITableViewSection"; headerTitle = "旅行信息"; ObjectID = "5kD-WK-zGp"; */
+"5kD-WK-zGp.headerTitle" = "旅行信息";
+
+/* Class = "UINavigationItem"; title = " 详细"; ObjectID = "6AO-Ng-dDW"; */
+"6AO-Ng-dDW.title" = " 详细";
+
+/* Class = "UINavigationItem"; title = "编辑提供代物"; ObjectID = "6G4-6q-1Ia"; */
+"6G4-6q-1Ia.title" = "编辑提供代物";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "6Ia-JI-bJD"; */
+"6Ia-JI-bJD.placeholder" = "城市";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "6OB-ul-LYS"; */
+"6OB-ul-LYS.headerTitle" = "联系方式";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "6U8-fO-gq4"; */
+"6U8-fO-gq4.text" = "到";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "6vX-xn-VMD"; */
+"6vX-xn-VMD.placeholder" = "点击选择日期";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "7DC-hb-dcB"; */
+"7DC-hb-dcB.normalTitle" = "代免税店";
+
+/* Class = "UILabel"; text = "提供代物"; ObjectID = "7Z0-HB-CbN"; */
+"7Z0-HB-CbN.text" = "提供代物";
+
+/* Class = "UITextField"; placeholder = "物品名称"; ObjectID = "7k0-9K-FWF"; */
+"7k0-9K-FWF.placeholder" = "物品名称";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "81s-q7-0ac"; */
+"81s-q7-0ac.text" = "电话：";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "89B-l9-0GE"; */
+"89B-l9-0GE.placeholder" = "国家";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "8n9-Ab-mTB"; */
+"8n9-Ab-mTB.placeholder" = "城市";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "9B4-Y8-W6x"; */
+"9B4-Y8-W6x.headerTitle" = "物品信息";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "9Ew-cp-6Tj"; */
+"9Ew-cp-6Tj.placeholder" = "点击选择日期";
+
+/* Class = "UIButton"; normalTitle = "散件"; ObjectID = "9Nn-sj-uFM"; */
+"9Nn-sj-uFM.normalTitle" = "散件";
+
+/* Class = "UITableViewSection"; headerTitle = " 旅行信息"; ObjectID = "A4v-AY-sFN"; */
+"A4v-AY-sFN.headerTitle" = " 旅行信息";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "ACY-In-xTn"; */
+"ACY-In-xTn.placeholder" = "国家";
+
+/* Class = "UIButton"; normalTitle = "散件"; ObjectID = "AUC-lv-tQg"; */
+"AUC-lv-tQg.normalTitle" = "散件";
+
+/* Class = "UIButton"; normalTitle = "可带整箱"; ObjectID = "Afv-pb-d7c"; */
+"Afv-pb-d7c.normalTitle" = "可带整箱";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "AjY-bm-QHj"; */
+"AjY-bm-QHj.text" = "微信：";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "BYU-f7-3qP"; */
+"BYU-f7-3qP.placeholder" = "城市";
+
+/* Class = "UINavigationItem"; title = "提供"; ObjectID = "Bz9-18-MBh"; */
+"Bz9-18-MBh.title" = "提供";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "CgJ-MC-Wcn"; */
+"CgJ-MC-Wcn.normalTitle" = "Create";
+
+/* Class = "UILabel"; text = "日期(最晚)："; ObjectID = "D1O-C8-g1q"; */
+"D1O-C8-g1q.text" = "日期(最晚)：";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "DO5-YF-YGq"; */
+"DO5-YF-YGq.normalTitle" = "代买物品";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "DPl-kF-n7j"; */
+"DPl-kF-n7j.headerTitle" = "联系方式";
+
+/* Class = "UITableViewSection"; headerTitle = "旅行信息"; ObjectID = "DRv-RL-Zek"; */
+"DRv-RL-Zek.headerTitle" = "旅行信息";
+
+/* Class = "UINavigationItem"; title = "添加"; ObjectID = "EEq-SA-LWv"; */
+"EEq-SA-LWv.title" = "添加";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "Ep4-xE-hS7"; */
+"Ep4-xE-hS7.normalTitle" = "代免税店";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "F06-we-zkH"; */
+"F06-we-zkH.placeholder" = "国家";
+
+/* Class = "UITextField"; placeholder = "物品名称"; ObjectID = "F0c-ov-DXM"; */
+"F0c-ov-DXM.placeholder" = "物品名称";
+
+/* Class = "UIButton"; normalTitle = "可带散件"; ObjectID = "FTl-u8-HTd"; */
+"FTl-u8-HTd.normalTitle" = "可带散件";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "Faq-e5-XhO"; */
+"Faq-e5-XhO.headerTitle" = "备注";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "FdZ-zG-ZLz"; */
+"FdZ-zG-ZLz.headerTitle" = "备注";
+
+/* Class = "UILabel"; text = "日期(最晚)："; ObjectID = "FqC-fE-hsl"; */
+"FqC-fE-hsl.text" = "日期(最晚)：";
+
+/* Class = "UITextField"; placeholder = "/KG"; ObjectID = "GKV-EY-wnJ"; */
+"GKV-EY-wnJ.placeholder" = "/KG";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "GwW-dH-ofQ"; */
+"GwW-dH-ofQ.text" = "微信：";
+
+/* Class = "UITableViewSection"; headerTitle = "标签"; ObjectID = "HNE-9V-6BQ"; */
+"HNE-9V-6BQ.headerTitle" = "标签";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "Hxa-1g-WOk"; */
+"Hxa-1g-WOk.headerTitle" = "备注";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "HyU-m4-tkB"; */
+"HyU-m4-tkB.placeholder" = "城市";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "I5P-l2-B85"; */
+"I5P-l2-B85.placeholder" = "国家";
+
+/* Class = "UITabBarItem"; title = "Me"; ObjectID = "IGD-zp-gGW"; */
+"IGD-zp-gGW.title" = "Me";
+
+/* Class = "UINavigationItem"; title = "Messager"; ObjectID = "Imp-wR-3dJ"; */
+"Imp-wR-3dJ.title" = "Messager";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "Isk-vd-EaV"; */
+"Isk-vd-EaV.text" = "电话：";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "Jgm-XO-Hai"; */
+"Jgm-XO-Hai.placeholder" = "点击选择日期";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "JhO-TP-dnU"; */
+"JhO-TP-dnU.headerTitle" = "联系方式";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "Jj6-Vg-EiR"; */
+"Jj6-Vg-EiR.headerTitle" = "物品信息";
+
+/* Class = "UINavigationItem"; title = "提供代物"; ObjectID = "K8I-aO-0he"; */
+"K8I-aO-0he.title" = "提供代物";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "KYS-OC-4Ni"; */
+"KYS-OC-4Ni.placeholder" = "城市";
+
+/* Class = "UILabel"; text = "日期(最早)："; ObjectID = "KzX-8b-Sta"; */
+"KzX-8b-Sta.text" = "日期(最早)：";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "L2n-nZ-ijg"; */
+"L2n-nZ-ijg.placeholder" = "国家";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "LzH-6u-0Un"; */
+"LzH-6u-0Un.text" = "微信：";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "M6f-7h-tvG"; */
+"M6f-7h-tvG.text" = "到";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "MOe-uH-rlG"; */
+"MOe-uH-rlG.headerTitle" = "联系方式";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "N3d-hE-3Kd"; */
+"N3d-hE-3Kd.text" = "到";
+
+/* Class = "UILabel"; text = "日期(最早)："; ObjectID = "NXr-zQ-zah"; */
+"NXr-zQ-zah.text" = "日期(最早)：";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "NaQ-G6-1Vm"; */
+"NaQ-G6-1Vm.placeholder" = "点击选择日期";
+
+/* Class = "UILabel"; text = "We Carry"; ObjectID = "NzK-Pq-rY0"; */
+"NzK-Pq-rY0.text" = "We Carry";
+
+/* Class = "UILabel"; text = "日期"; ObjectID = "OQb-Az-SGL"; */
+"OQb-Az-SGL.text" = "日期";
+
+/* Class = "UINavigationItem"; title = "Me"; ObjectID = "OSI-B5-QRQ"; */
+"OSI-B5-QRQ.title" = "Me";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "Om5-Lp-3q4"; */
+"Om5-Lp-3q4.text" = "到";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "Ool-Mr-yZp"; */
+"Ool-Mr-yZp.normalTitle" = "代收淘宝";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "PVf-8J-cwx"; */
+"PVf-8J-cwx.placeholder" = "国家";
+
+/* Class = "UINavigationItem"; title = "Main"; ObjectID = "PeG-Yb-Wft"; */
+"PeG-Yb-Wft.title" = "Main";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "Q8k-a5-Iyg"; */
+"Q8k-a5-Iyg.text" = "电话：";
+
+/* Class = "UIButton"; normalTitle = "整箱"; ObjectID = "QRi-g4-IVY"; */
+"QRi-g4-IVY.normalTitle" = "整箱";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "R4X-Fu-12U"; */
+"R4X-Fu-12U.text" = "到";
+
+/* Class = "UILabel"; text = "名称："; ObjectID = "R5J-rl-Xl3"; */
+"R5J-rl-Xl3.text" = "名称：";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "R94-pL-Wef"; */
+"R94-pL-Wef.text" = "电话：";
+
+/* Class = "UILabel"; text = "重量："; ObjectID = "RKo-Z0-QxQ"; */
+"RKo-Z0-QxQ.text" = "重量：";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "RaN-fc-bhc"; */
+"RaN-fc-bhc.normalTitle" = "代买物品";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "Rb2-FB-dvs"; */
+"Rb2-FB-dvs.headerTitle" = "联系方式";
+
+/* Class = "UINavigationItem"; title = "添加"; ObjectID = "Rcg-TL-icy"; */
+"Rcg-TL-icy.title" = "添加";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "RlT-WK-OFm"; */
+"RlT-WK-OFm.placeholder" = "国家";
+
+/* Class = "UIButton"; normalTitle = "可带散件"; ObjectID = "RmI-zi-BUj"; */
+"RmI-zi-BUj.normalTitle" = "可带散件";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "RzP-fV-BvL"; */
+"RzP-fV-BvL.headerTitle" = "物品信息";
+
+/* Class = "UILabel"; text = "体积："; ObjectID = "TJa-uA-stt"; */
+"TJa-uA-stt.text" = "体积：";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "TU0-nH-ufw"; */
+"TU0-nH-ufw.headerTitle" = "物品信息";
+
+/* Class = "UILabel"; text = "日期"; ObjectID = "URt-u7-eYf"; */
+"URt-u7-eYf.text" = "日期";
+
+/* Class = "UITextField"; placeholder = "长x宽x高"; ObjectID = "UWh-SM-gLS"; */
+"UWh-SM-gLS.placeholder" = "长x宽x高";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "VAE-Tz-WFm"; */
+"VAE-Tz-WFm.placeholder" = "点击选择日期";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "VaW-Xe-COh"; */
+"VaW-Xe-COh.text" = "电话：";
+
+/* Class = "UINavigationItem"; title = "寻求代物"; ObjectID = "Vao-fI-Sp7"; */
+"Vao-fI-Sp7.title" = "寻求代物";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Vas-57-ol0"; */
+"Vas-57-ol0.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "长x宽x高"; ObjectID = "Vhg-fK-AHx"; */
+"Vhg-fK-AHx.placeholder" = "长x宽x高";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "VtN-3X-Lj6"; */
+"VtN-3X-Lj6.normalTitle" = "代买物品";
+
+/* Class = "UITableViewSection"; headerTitle = "服务类别"; ObjectID = "WNY-7f-N8m"; */
+"WNY-7f-N8m.headerTitle" = "服务类别";
+
+/* Class = "UILabel"; text = "体积："; ObjectID = "WOA-18-2hV"; */
+"WOA-18-2hV.text" = "体积：";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "WUJ-KY-JkY"; */
+"WUJ-KY-JkY.text" = "微信：";
+
+/* Class = "UILabel"; text = "重量："; ObjectID = "Wfv-yp-Me0"; */
+"Wfv-yp-Me0.text" = "重量：";
+
+/* Class = "UILabel"; text = "我的寻求"; ObjectID = "Wzl-Y5-KDd"; */
+"Wzl-Y5-KDd.text" = "我的寻求";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "Wzv-CB-yNB"; */
+"Wzv-CB-yNB.text" = "从";
+
+/* Class = "UILabel"; text = "可带公斤："; ObjectID = "YHD-dD-rKq"; */
+"YHD-dD-rKq.text" = "可带公斤：";
+
+/* Class = "UINavigationItem"; title = "Map"; ObjectID = "YZ5-91-8cy"; */
+"YZ5-91-8cy.title" = "Map";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "Yor-vn-E3A"; */
+"Yor-vn-E3A.text" = "到";
+
+/* Class = "UIButton"; normalTitle = "整箱"; ObjectID = "YwU-Pa-ghF"; */
+"YwU-Pa-ghF.normalTitle" = "整箱";
+
+/* Class = "UILabel"; text = "日期(最晚)："; ObjectID = "ZV4-0E-DZU"; */
+"ZV4-0E-DZU.text" = "日期(最晚)：";
+
+/* Class = "UINavigationItem"; title = "编辑寻求代物"; ObjectID = "Zck-gv-g4w"; */
+"Zck-gv-g4w.title" = "编辑寻求代物";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "Zvs-3N-Wnh"; */
+"Zvs-3N-Wnh.normalTitle" = "代免税店";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "Zyp-Fr-rVQ"; */
+"Zyp-Fr-rVQ.placeholder" = "点击选择日期";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "aOq-Ou-9ha"; */
+"aOq-Ou-9ha.normalTitle" = "代收淘宝";
+
+/* Class = "UILabel"; text = "重量："; ObjectID = "b6c-AX-GPo"; */
+"b6c-AX-GPo.text" = "重量：";
+
+/* Class = "UITextField"; placeholder = "/KG"; ObjectID = "baF-44-pgj"; */
+"baF-44-pgj.placeholder" = "/KG";
+
+/* Class = "UITextField"; placeholder = "物品名称"; ObjectID = "bmB-AN-K1v"; */
+"bmB-AN-K1v.placeholder" = "物品名称";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "brU-c4-VHO"; */
+"brU-c4-VHO.normalTitle" = "代买物品";
+
+/* Class = "UILabel"; text = "日期(最晚)："; ObjectID = "brd-kV-82w"; */
+"brd-kV-82w.text" = "日期(最晚)：";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "cFG-7l-U47"; */
+"cFG-7l-U47.placeholder" = "城市";
+
+/* Class = "UILabel"; text = "可带公斤："; ObjectID = "cQP-5Y-cEi"; */
+"cQP-5Y-cEi.text" = "可带公斤：";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "cWS-8H-97o"; */
+"cWS-8H-97o.headerTitle" = "物品信息";
+
+/* Class = "UITextField"; placeholder = "/KG"; ObjectID = "cdg-Pc-cQG"; */
+"cdg-Pc-cQG.placeholder" = "/KG";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "cvB-DO-If5"; */
+"cvB-DO-If5.normalTitle" = "代收淘宝";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "dKA-uK-OxJ"; */
+"dKA-uK-OxJ.placeholder" = "点击选择日期";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "dgr-KC-1Fl"; */
+"dgr-KC-1Fl.text" = "从";
+
+/* Class = "UITableViewSection"; headerTitle = "服务类别"; ObjectID = "duY-xK-lDB"; */
+"duY-xK-lDB.headerTitle" = "服务类别";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "eBz-xP-QGs"; */
+"eBz-xP-QGs.placeholder" = "国家";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "eDR-gI-GZ4"; */
+"eDR-gI-GZ4.placeholder" = "点击选择日期";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "f6q-Bo-NHP"; */
+"f6q-Bo-NHP.headerTitle" = "备注";
+
+/* Class = "UITextField"; placeholder = "点击选择日期"; ObjectID = "fMD-1N-LRk"; */
+"fMD-1N-LRk.placeholder" = "点击选择日期";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "fSd-lR-aEK"; */
+"fSd-lR-aEK.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "fbY-WH-7Ws"; */
+"fbY-WH-7Ws.normalTitle" = "代收淘宝";
+
+/* Class = "UITableViewSection"; headerTitle = "服务类别"; ObjectID = "fra-rR-mq1"; */
+"fra-rR-mq1.headerTitle" = "服务类别";
+
+/* Class = "UINavigationItem"; title = "添加"; ObjectID = "gdp-en-XDd"; */
+"gdp-en-XDd.title" = "添加";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "geM-0b-Lki"; */
+"geM-0b-Lki.text" = "微信：";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "gfN-yQ-3w5"; */
+"gfN-yQ-3w5.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "gfU-PN-62X"; */
+"gfU-PN-62X.normalTitle" = "代收淘宝";
+
+/* Class = "UIButton"; normalTitle = "整箱"; ObjectID = "gg8-IM-1Nm"; */
+"gg8-IM-1Nm.normalTitle" = "整箱";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "hXZ-oe-OkX"; */
+"hXZ-oe-OkX.headerTitle" = "备注";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "hYK-kH-5ZA"; */
+"hYK-kH-5ZA.placeholder" = "国家";
+
+/* Class = "UILabel"; text = "日期(最早)："; ObjectID = "hxf-dJ-HCn"; */
+"hxf-dJ-HCn.text" = "日期(最早)：";
+
+/* Class = "UIButton"; normalTitle = "退出登陆"; ObjectID = "i7b-xo-dcr"; */
+"i7b-xo-dcr.normalTitle" = "退出登陆";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "iYT-Lp-xa9"; */
+"iYT-Lp-xa9.text" = "从";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "j3P-DX-gkV"; */
+"j3P-DX-gkV.text" = "微信：";
+
+/* Class = "UILabel"; text = "名称："; ObjectID = "jbP-MF-noq"; */
+"jbP-MF-noq.text" = "名称：";
+
+/* Class = "UITableViewSection"; headerTitle = "联系方式"; ObjectID = "joU-85-Pvl"; */
+"joU-85-Pvl.headerTitle" = "联系方式";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "kOc-ey-HQ5"; */
+"kOc-ey-HQ5.text" = "从";
+
+/* Class = "UILabel"; text = "到"; ObjectID = "lL0-H4-ARl"; */
+"lL0-H4-ARl.text" = "到";
+
+/* Class = "UIButton"; normalTitle = "可带整箱"; ObjectID = "lWl-zS-edx"; */
+"lWl-zS-edx.normalTitle" = "可带整箱";
+
+/* Class = "UILabel"; text = "电话："; ObjectID = "m35-GF-Mle"; */
+"m35-GF-Mle.text" = "电话：";
+
+/* Class = "UITableViewSection"; headerTitle = "旅行信息"; ObjectID = "mSw-om-IN3"; */
+"mSw-om-IN3.headerTitle" = "旅行信息";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "nRH-9L-nDi"; */
+"nRH-9L-nDi.normalTitle" = "代免税店";
+
+/* Class = "UITableViewSection"; headerTitle = " 旅行信息"; ObjectID = "nUc-1X-3ID"; */
+"nUc-1X-3ID.headerTitle" = " 旅行信息";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "o0j-3X-lty"; */
+"o0j-3X-lty.placeholder" = "国家";
+
+/* Class = "UILabel"; text = "从"; ObjectID = "o3C-Sa-rYk"; */
+"o3C-Sa-rYk.text" = "从";
+
+/* Class = "UILabel"; text = "名称："; ObjectID = "oIc-z5-XKW"; */
+"oIc-z5-XKW.text" = "名称：";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "oKA-Zo-rQ0"; */
+"oKA-Zo-rQ0.headerTitle" = "物品信息";
+
+/* Class = "UILabel"; text = "日期(最早)："; ObjectID = "ohv-8o-WzJ"; */
+"ohv-8o-WzJ.text" = "日期(最早)：";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "ovS-U5-FdC"; */
+"ovS-U5-FdC.normalTitle" = "代免税店";
+
+/* Class = "UIButton"; normalTitle = "代免税店"; ObjectID = "p2Y-aF-hnK"; */
+"p2Y-aF-hnK.normalTitle" = "代免税店";
+
+/* Class = "UITextField"; placeholder = "Account Name"; ObjectID = "pDi-rr-hMn"; */
+"pDi-rr-hMn.placeholder" = "Account Name";
+
+/* Class = "UITableViewSection"; headerTitle = "物品信息"; ObjectID = "pHN-SX-xbE"; */
+"pHN-SX-xbE.headerTitle" = "物品信息";
+
+/* Class = "UINavigationItem"; title = "添加"; ObjectID = "pNT-2L-7DR"; */
+"pNT-2L-7DR.title" = "添加";
+
+/* Class = "UIButton"; normalTitle = "代买物品"; ObjectID = "pR5-pJ-kzz"; */
+"pR5-pJ-kzz.normalTitle" = "代买物品";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "quK-gh-qyi"; */
+"quK-gh-qyi.placeholder" = "城市";
+
+/* Class = "UINavigationItem"; title = "寻求"; ObjectID = "r83-Tf-ldM"; */
+"r83-Tf-ldM.title" = "寻求";
+
+/* Class = "UILabel"; text = "名称："; ObjectID = "rfh-WC-fhg"; */
+"rfh-WC-fhg.text" = "名称：";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "rs7-gv-nKZ"; */
+"rs7-gv-nKZ.placeholder" = "国家";
+
+/* Class = "UILabel"; text = "日期"; ObjectID = "tJA-nY-xXL"; */
+"tJA-nY-xXL.text" = "日期";
+
+/* Class = "UILabel"; text = "重量："; ObjectID = "tZu-p1-7hP"; */
+"tZu-p1-7hP.text" = "重量：";
+
+/* Class = "UITextField"; placeholder = "国家"; ObjectID = "tw8-hz-cSc"; */
+"tw8-hz-cSc.placeholder" = "国家";
+
+/* Class = "UILabel"; text = "寻求代物"; ObjectID = "upz-sc-LuE"; */
+"upz-sc-LuE.text" = "寻求代物";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "v8F-Vi-4Tu"; */
+"v8F-Vi-4Tu.placeholder" = "城市";
+
+/* Class = "UILabel"; text = "我的提供"; ObjectID = "vMK-Kg-IDE"; */
+"vMK-Kg-IDE.text" = "我的提供";
+
+/* Class = "UITextField"; placeholder = "/KG"; ObjectID = "vXU-Zf-9Th"; */
+"vXU-Zf-9Th.placeholder" = "/KG";
+
+/* Class = "UIButton"; normalTitle = "整箱"; ObjectID = "vfL-9l-amu"; */
+"vfL-9l-amu.normalTitle" = "整箱";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "wQD-ck-XgC"; */
+"wQD-ck-XgC.placeholder" = "城市";
+
+/* Class = "UIButton"; normalTitle = "整箱"; ObjectID = "wx6-C6-ISE"; */
+"wx6-C6-ISE.normalTitle" = "整箱";
+
+/* Class = "UILabel"; text = "微信："; ObjectID = "xrw-xe-iH6"; */
+"xrw-xe-iH6.text" = "微信：";
+
+/* Class = "UITextField"; placeholder = "城市"; ObjectID = "xyh-Ua-TK9"; */
+"xyh-Ua-TK9.placeholder" = "城市";
+
+/* Class = "UITableViewSection"; headerTitle = "旅行信息"; ObjectID = "xz8-13-BDq"; */
+"xz8-13-BDq.headerTitle" = "旅行信息";
+
+/* Class = "UITabBarItem"; title = "Messages"; ObjectID = "yY9-Rq-XZW"; */
+"yY9-Rq-XZW.title" = "Messages";
+
+/* Class = "UITableViewSection"; headerTitle = " 旅行信息"; ObjectID = "z0p-hS-z9O"; */
+"z0p-hS-z9O.headerTitle" = " 旅行信息";
+
+/* Class = "UILabel"; text = "可带公斤："; ObjectID = "zax-cr-ATp"; */
+"zax-cr-ATp.text" = "可带公斤：";
+
+/* Class = "UITableViewSection"; headerTitle = "备注"; ObjectID = "ztC-fs-eh8"; */
+"ztC-fs-eh8.headerTitle" = "备注";
+
+/* Class = "UIButton"; normalTitle = "代收淘宝"; ObjectID = "zwT-4r-iGH"; */
+"zwT-4r-iGH.normalTitle" = "代收淘宝";
+
+/* Class = "UITextField"; placeholder = "物品名称"; ObjectID = "zxl-1o-f9w"; */
+"zxl-1o-f9w.placeholder" = "物品名称";

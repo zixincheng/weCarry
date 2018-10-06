@@ -16,6 +16,8 @@
 		942A4989203E8D01009032F4 /* CreateNewOfferTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A4988203E8D01009032F4 /* CreateNewOfferTableViewController.swift */; };
 		942A498B203E8D13009032F4 /* CreateNewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A498A203E8D13009032F4 /* CreateNewRequestTableViewController.swift */; };
 		942A4998204A69CF009032F4 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A4997204A69CF009032F4 /* MeTableViewController.swift */; };
+		943AC6152112CE0F00271E84 /* OfferingDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943AC6142112CE0F00271E84 /* OfferingDetailTableViewController.swift */; };
+		943AC61A2150B8B800271E84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 943AC61C2150B8B800271E84 /* Localizable.strings */; };
 		949DF833205100A900509338 /* CountryCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 949DF832205100A900509338 /* CountryCity.plist */; };
 		949DF8372060C6E700509338 /* PSCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 949DF8352060C6E600509338 /* PSCityPickerView.m */; };
 		949DF839208706D900509338 /* PersonalRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949DF838208706D900509338 /* PersonalRequestTableViewController.swift */; };
@@ -70,6 +72,10 @@
 		942A4988203E8D01009032F4 /* CreateNewOfferTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewOfferTableViewController.swift; sourceTree = "<group>"; };
 		942A498A203E8D13009032F4 /* CreateNewRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewRequestTableViewController.swift; sourceTree = "<group>"; };
 		942A4997204A69CF009032F4 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
+		943AC6142112CE0F00271E84 /* OfferingDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingDetailTableViewController.swift; sourceTree = "<group>"; };
+		943AC6172150B5DB00271E84 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		943AC61D2150B8BA00271E84 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		943AC61E2150B8D100271E84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		949DF832205100A900509338 /* CountryCity.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CountryCity.plist; sourceTree = "<group>"; };
 		949DF8342060C6E500509338 /* weCarry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weCarry-Bridging-Header.h"; sourceTree = "<group>"; };
 		949DF8352060C6E600509338 /* PSCityPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCityPickerView.m; sourceTree = "<group>"; };
@@ -153,12 +159,13 @@
 		9BCD5B7320295B3B009314CD = {
 			isa = PBXGroup;
 			children = (
+				943AC61C2150B8B800271E84 /* Localizable.strings */,
+				4A6DCAD6E9E90864F2C3682D /* Frameworks */,
+				C61DAC4C49A4D83BB21F84FC /* Pods */,
+				9BCD5B7D20295B3B009314CD /* Products */,
 				9BCD5B7E20295B3B009314CD /* weCarry */,
 				9BCD5B9320295B3C009314CD /* weCarryTests */,
 				9BCD5B9E20295B3C009314CD /* weCarryUITests */,
-				9BCD5B7D20295B3B009314CD /* Products */,
-				C61DAC4C49A4D83BB21F84FC /* Pods */,
-				4A6DCAD6E9E90864F2C3682D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,8 +218,8 @@
 		9BCD5BB5202AD040009314CD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				942A497C20355710009032F4 /* OfferingListViewControllerTableViewController.swift */,
 				9BCD5BB6202AD040009314CD /* LoginViewController.swift */,
+				942A497C20355710009032F4 /* OfferingListViewControllerTableViewController.swift */,
 				942A497E20355A14009032F4 /* RequestingListTableViewController.swift */,
 				942A4988203E8D01009032F4 /* CreateNewOfferTableViewController.swift */,
 				942A498A203E8D13009032F4 /* CreateNewRequestTableViewController.swift */,
@@ -221,6 +228,7 @@
 				949DF83A208706EC00509338 /* PersonalOfferTableViewController.swift */,
 				94F31D2620983418009AAF4F /* EditOfferTableViewController.swift */,
 				94F31D282098342B009AAF4F /* EditRequestTableViewController.swift */,
+				943AC6142112CE0F00271E84 /* OfferingDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 9BCD5B7320295B3B009314CD;
 			productRefGroup = 9BCD5B7D20295B3B009314CD /* Products */;
@@ -382,6 +391,7 @@
 				9BCD5B8720295B3B009314CD /* Assets.xcassets in Resources */,
 				9BCD5B8520295B3B009314CD /* Main.storyboard in Resources */,
 				949DF833205100A900509338 /* CountryCity.plist in Resources */,
+				943AC61A2150B8B800271E84 /* Localizable.strings in Resources */,
 				942A49872036AB73009032F4 /* RequestListingTableViewCell.xib in Resources */,
 				9BCD5BC4202BA181009314CD /* OfferListingTableCell.xib in Resources */,
 			);
@@ -614,6 +624,7 @@
 				942A497F20355A14009032F4 /* RequestingListTableViewController.swift in Sources */,
 				94F31D292098342B009AAF4F /* EditRequestTableViewController.swift in Sources */,
 				942A497D20355710009032F4 /* OfferingListViewControllerTableViewController.swift in Sources */,
+				943AC6152112CE0F00271E84 /* OfferingDetailTableViewController.swift in Sources */,
 				942A49862036AB73009032F4 /* RequestListingTableViewCell.swift in Sources */,
 				942A4989203E8D01009032F4 /* CreateNewOfferTableViewController.swift in Sources */,
 				942A498120355E38009032F4 /* UserInfoObject.swift in Sources */,
@@ -660,6 +671,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		943AC61C2150B8B800271E84 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				943AC61D2150B8BA00271E84 /* zh-Hans */,
+				943AC61E2150B8D100271E84 /* Base */,
+			);
+			name = Localizable.strings;
+			path = weCarry;
+			sourceTree = "<group>";
+		};
 		9BCD5B8320295B3B009314CD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -672,6 +693,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9BCD5B8920295B3B009314CD /* Base */,
+				943AC6172150B5DB00271E84 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -683,6 +705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -740,6 +763,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

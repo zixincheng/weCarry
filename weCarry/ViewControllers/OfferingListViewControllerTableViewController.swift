@@ -12,6 +12,7 @@ class OfferingListViewControllerTableViewController: UITableViewController {
     var db: Firestore!
     
     var offerObjectList = [OfferListingObject]()
+    var selectedObj = OfferListingObject(userInfo: ["" : ""], leftWeight: "", avalibleService: ["" : true], avaliblePackage: ["" : true], travelInfo: ["" : ""], phoneNumber: "", weChat:"", comments:"")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +151,11 @@ class OfferingListViewControllerTableViewController: UITableViewController {
         return 175
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedObj = self.offerObjectList[indexPath.row]
+        performSegue(withIdentifier: "offerDetailSegue", sender: self)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -186,14 +192,21 @@ class OfferingListViewControllerTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "offerDetailSegue" {
+            
+            let offeringDetailViewController = segue.destination as! OfferingDetailTableViewController
+            offeringDetailViewController.selectedObj = self.selectedObj;
+            //editOfferViewController.selectedOfferId = self.selectedOfferId;
+            
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
