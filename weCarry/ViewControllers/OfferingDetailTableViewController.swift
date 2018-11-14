@@ -33,6 +33,9 @@ class OfferingDetailTableViewController: UITableViewController {
         self.toCityTextField.text = self.selectedObj.travelInfo["toCity"]
         self.dateTextField.text = self.selectedObj.travelInfo["time"]
         self.leftWeightTextFiled.text = self.selectedObj.leftWeight
+        self.weChatTextField.text = self.selectedObj.weChat;
+        self.phoneTextField.text = self.selectedObj.phoneNumber;
+        self.commentsTextView.text = self.selectedObj.comments;
 
         if (self.selectedObj.avalibleService["代买物品"]!) {
             self.serviceTypeBtn.titleLabel?.text = "代买物品"

@@ -496,15 +496,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="175" id="BXD-UT-myY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="175" id="BXD-UT-myY">
                                 <rect key="frame" x="0.0" y="28" width="375" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BXD-UT-myY" id="p5R-fX-Ju0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="174.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="TEC-y5-l2l" kind="push" identifier="reqeustDetailSegue" trigger="accessoryAction" id="h9q-Os-4NS"/>
+                                    <segue destination="jMn-94-8QO" kind="push" identifier="reqeustDetailSegue" id="Cbu-C2-SCA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -907,22 +907,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5V-uM-MyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4214" y="-472"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="UGe-Z4-Sq7">
-            <objects>
-                <viewController id="TEC-y5-l2l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Grw-DM-ggS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="hzz-34-gMf"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Kya-62-XPC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jwa-IQ-B0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3276" y="272"/>
         </scene>
         <!--Me-->
         <scene sceneID="Va3-k7-SzC">
@@ -1389,16 +1373,19 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buyBtn" destination="DO5-YF-YGq" id="QXZ-uH-EiR"/>
+                        <outlet property="commentsTextView" destination="PVy-V0-aQS" id="OZ4-uP-cSa"/>
                         <outlet property="dateTextField" destination="0et-o9-B4H" id="6k8-Tz-x5C"/>
                         <outlet property="fromCityTextField" destination="KYS-OC-4Ni" id="mjZ-zP-NND"/>
                         <outlet property="fromCountryTextField" destination="I5P-l2-B85" id="7hy-op-ok1"/>
                         <outlet property="leftWeightTextFiled" destination="tNQ-qP-Lp6" id="NG3-Sf-xwu"/>
                         <outlet property="oneCaseBtn" destination="lWl-zS-edx" id="GkG-OR-n6c"/>
                         <outlet property="onebulkBtn" destination="RmI-zi-BUj" id="Zls-kR-9g9"/>
+                        <outlet property="phoneTextField" destination="R2w-Lv-2E9" id="Q47-02-X8m"/>
                         <outlet property="taobaoBtn" destination="aOq-Ou-9ha" id="Uhq-rq-jEM"/>
                         <outlet property="taxFreeBtn" destination="p2Y-aF-hnK" id="BIm-DU-HXR"/>
                         <outlet property="toCityTextField" destination="8n9-Ab-mTB" id="efr-VC-peF"/>
                         <outlet property="toCountryTextField" destination="1of-DD-KmI" id="UUR-ex-ex8"/>
+                        <outlet property="weChatTextField" destination="B25-tU-ti4" id="6CC-2V-HC7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RS8-My-4mJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1769,6 +1756,7 @@
                         <outlet property="buyBtn" destination="pR5-pJ-kzz" id="xFD-Op-VqD"/>
                         <outlet property="cityFromTextField" destination="wQD-ck-XgC" id="8Za-Ge-eAx"/>
                         <outlet property="cityToTextField" destination="2fD-Ml-efC" id="CNe-Tg-7jG"/>
+                        <outlet property="commentsTextView" destination="4pX-UJ-22e" id="V4f-1c-MOZ"/>
                         <outlet property="countryFromTextField" destination="PVf-8J-cwx" id="t1t-bD-02Q"/>
                         <outlet property="countryToTextField" destination="ACY-In-xTn" id="qTW-NZ-CZz"/>
                         <outlet property="dateEarliestTextField" destination="VAE-Tz-WFm" id="eVT-i3-qFW"/>
@@ -1777,8 +1765,10 @@
                         <outlet property="itemSizeTextField" destination="11u-hn-RH0" id="Ydl-Sn-VKZ"/>
                         <outlet property="itemWeightTextField" destination="cdg-Pc-cQG" id="kVY-ec-uew"/>
                         <outlet property="oneCaseBtn" destination="wx6-C6-ISE" id="t5T-1c-2gc"/>
+                        <outlet property="phoneTextField" destination="c6b-no-rzD" id="Waz-9n-Ebg"/>
                         <outlet property="taobaoBtn" destination="zwT-4r-iGH" id="JXn-sk-vq4"/>
                         <outlet property="taxFreeBtn" destination="7DC-hb-dcB" id="RdJ-cq-Ty7"/>
+                        <outlet property="weChatTextField" destination="wBj-BF-nsF" id="zEl-Nw-Hgt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCT-dp-xjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2168,10 +2158,10 @@
             </objects>
             <point key="canvasLocation" x="4213.6000000000004" y="-472.71364317841085"/>
         </scene>
-        <!--添加-->
+        <!--Detail-->
         <scene sceneID="cZ4-ME-Hc0">
             <objects>
-                <tableViewController id="jMn-94-8QO" customClass="CreateNewRequestTableViewController" customModule="weCarry" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jMn-94-8QO" customClass="RequestingDetailTableViewController" customModule="weCarry" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GrA-b7-Bg5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2520,42 +2510,36 @@
                             <outlet property="delegate" destination="jMn-94-8QO" id="4lg-pv-maV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="添加" id="gdp-en-XDd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1Gv-fM-rad">
-                            <connections>
-                                <action selector="doneBtnPressed:" destination="jMn-94-8QO" id="NhY-T0-afR"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Detail" id="gdp-en-XDd"/>
                     <connections>
-                        <outlet property="bulkBtn" destination="9Nn-sj-uFM" id="5ZK-gd-2vx"/>
-                        <outlet property="buyBtn" destination="brU-c4-VHO" id="21i-gI-j17"/>
-                        <outlet property="cityFromTextField" destination="6Ia-JI-bJD" id="DLg-5A-l9C"/>
-                        <outlet property="cityToTextField" destination="BYU-f7-3qP" id="Ixt-2c-Y95"/>
-                        <outlet property="commentsTextView" destination="c5S-hq-gIN" id="XB1-VD-dYI"/>
-                        <outlet property="countryFromTextField" destination="hYK-kH-5ZA" id="qJ8-bY-6cO"/>
-                        <outlet property="countryToTextField" destination="eBz-xP-QGs" id="kRw-0i-XeK"/>
-                        <outlet property="dateEarliestTextField" destination="Zyp-Fr-rVQ" id="fBu-6c-xcK"/>
-                        <outlet property="dateLatestTextField" destination="6vX-xn-VMD" id="L5t-1I-meH"/>
-                        <outlet property="itemNameTextfield" destination="bmB-AN-K1v" id="AJM-AN-Zty"/>
-                        <outlet property="itemSizeTextField" destination="27L-jA-84i" id="CaY-dN-3j3"/>
-                        <outlet property="itemWeightTextField" destination="vXU-Zf-9Th" id="Dft-y5-exb"/>
-                        <outlet property="oneCaseBtn" destination="gg8-IM-1Nm" id="cmo-XS-MHs"/>
-                        <outlet property="phoneTextField" destination="bbH-wb-2Kw" id="PaU-1H-crG"/>
-                        <outlet property="taobaoBtn" destination="gfU-PN-62X" id="pzA-A5-jlm"/>
-                        <outlet property="taxFreeBtn" destination="Zvs-3N-Wnh" id="Ukp-yl-iMO"/>
-                        <outlet property="weChatTextField" destination="X3p-Xj-dHp" id="8O2-4I-kvC"/>
+                        <outlet property="buyBtn" destination="brU-c4-VHO" id="kNf-Nf-1Ti"/>
+                        <outlet property="byCaseBtn" destination="gg8-IM-1Nm" id="O5a-4c-n6U"/>
+                        <outlet property="byPieceBtn" destination="9Nn-sj-uFM" id="6kC-hU-CX7"/>
+                        <outlet property="commentsTextView" destination="c5S-hq-gIN" id="irj-PJ-fUR"/>
+                        <outlet property="dateFromTextField" destination="Zyp-Fr-rVQ" id="IUr-yJ-mUa"/>
+                        <outlet property="dateToTextField" destination="6vX-xn-VMD" id="zGu-Ia-lw4"/>
+                        <outlet property="dutyFreeBtn" destination="Zvs-3N-Wnh" id="Nya-lL-I0M"/>
+                        <outlet property="fromCityTextField" destination="6Ia-JI-bJD" id="Qja-0t-ppG"/>
+                        <outlet property="fromCountryTextField" destination="hYK-kH-5ZA" id="jIL-b7-ijT"/>
+                        <outlet property="nameTextField" destination="bmB-AN-K1v" id="XFY-Yp-sWB"/>
+                        <outlet property="phoneTextField" destination="bbH-wb-2Kw" id="vZF-YX-8jt"/>
+                        <outlet property="sizeTextField" destination="27L-jA-84i" id="ehY-i9-133"/>
+                        <outlet property="taobaoBtn" destination="gfU-PN-62X" id="fE1-mn-287"/>
+                        <outlet property="toCityTextField" destination="BYU-f7-3qP" id="GaJ-kK-F7G"/>
+                        <outlet property="toCountryTextField" destination="eBz-xP-QGs" id="wcA-lz-JAI"/>
+                        <outlet property="weChatTextField" destination="X3p-Xj-dHp" id="sHI-Wk-fSt"/>
+                        <outlet property="weightTextFiled" destination="vXU-Zf-9Th" id="oIN-hr-nRE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdU-Xx-qBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4752.8000000000002" y="237.93103448275863"/>
+            <point key="canvasLocation" x="4214" y="240"/>
         </scene>
         <!--Detail-->
         <scene sceneID="6bI-k7-W5O">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="tTT-uF-LYH" customClass="OfferingDetailTableViewController" customModule="weCarry" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EIJ-J7-rN7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EIJ-J7-rN7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

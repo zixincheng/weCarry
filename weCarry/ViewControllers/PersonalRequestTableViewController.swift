@@ -16,7 +16,7 @@ class PersonalRequestTableViewController: UITableViewController {
     var ObjectList = [RequestListingObject]()
     var requestIds = [String]()
     
-    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""])
+    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""], phoneNumber: "", weChat: "", comments: "")
     
     var selectedRequestId : String = ""
     var deletedRequestId : String = ""
@@ -51,7 +51,7 @@ class PersonalRequestTableViewController: UITableViewController {
                                     let requestIdref = self.db.collection("requestListing").document(id)
                                     requestIdref.getDocument { (request, error) in
                                         if let request = request, request.exists {
-                                            let obj = RequestListingObject(userInfo: request.data()!["userInfo"] as! [String: String], serviceType: request.data()!["serviceType"] as! String, packageType: request.data()!["packageType"] as! String , travelInfo: request.data()!["travelInfo"] as! [String : String], itemInfo: request.data()!["itemInfo"] as! [String : String])
+                                            let obj = RequestListingObject(userInfo: request.data()!["userInfo"] as! [String: String], serviceType: request.data()!["serviceType"] as! String, packageType: request.data()!["packageType"] as! String , travelInfo: request.data()!["travelInfo"] as! [String : String], itemInfo: request.data()!["itemInfo"] as! [String : String], phoneNumber: request.data()!["phoneNumber"] as! String, weChat: request.data()!["weChat"] as! String, comments: request.data()!["comments"] as!String)
                                                 self.ObjectList.append(obj)
                                                 self.requestIds.append(id)
                                                 

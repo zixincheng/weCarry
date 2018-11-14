@@ -25,6 +25,9 @@ class EditRequestTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var buyBtn: UIButton!
     @IBOutlet weak var oneCaseBtn: UIButton!
     @IBOutlet weak var bulkBtn: UIButton!
+    @IBOutlet weak var weChatTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var commentsTextView: UITextView!
     
     var fromCountryPicker: UIPickerView! = UIPickerView()
     var toCountryPicker: UIPickerView! = UIPickerView()
@@ -46,7 +49,7 @@ class EditRequestTableViewController: UITableViewController, UIPickerViewDelegat
         case TOCITY
     }
     
-    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""])
+    var selectedObj = RequestListingObject(userInfo: ["":""], serviceType: "", packageType: "", travelInfo: ["":""], itemInfo: ["":""], phoneNumber: "", weChat: "", comments: "")
     var selectedRequestId : String = ""
     
     override func viewDidLoad() {
@@ -273,43 +276,51 @@ class EditRequestTableViewController: UITableViewController, UIPickerViewDelegat
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
-            var availableService = "";
-            if (buyBtn.isSelected) {
-                availableService = "代买物品"
-            } else if (taxFreeBtn.isSelected) {
-                availableService = "代免税店"
-            } else if (taobaoBtn.isSelected) {
-                availableService = "代收淘宝"
-            }
-            var avaliblePackage = "";
-            if (bulkBtn.isSelected) {
-                avaliblePackage = "散件"
-            } else if (oneCaseBtn.isSelected) {
-                avaliblePackage = "整箱"
-            }
-            
             let requestRef = self.db.collection("requestListing").document(self.selectedRequestId)
             requestRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    requestRef.updateData([
-                       "packageType": avaliblePackage,
-                       "serviceType":availableService,
-                       "itemInfo":  ["weight": self.itemWeightTextField.text, "size": self.itemSizeTextField.text, "generalInfo": self.itemNameTextfield.text],
-                       "travelInfo": ["fromCountry": self.countryFromTextField.text, "fromCity": self.cityFromTextField.text, "toCountry": self.countryToTextField.text, "toCity": self.cityToTextField.text, "latestLimitTime": self.dateLatestTextField.text, "earliestLimitTIme": self.dateEarliestTextField.text],
-                       "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document does not exist")
-                            
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
+                    self.updateDatabase(requestRef)
                     
                 } else {
                     print("Document does not exist")
                 }
+            }
+        }
+    }
+    
+    func updateDatabase(_ requestRef : DocumentReference) {
+        var availableService = "";
+        if (buyBtn.isSelected) {
+            availableService = "代买物品"
+        } else if (taxFreeBtn.isSelected) {
+            availableService = "代免税店"
+        } else if (taobaoBtn.isSelected) {
+            availableService = "代收淘宝"
+        }
+        var avaliblePackage = "";
+        if (bulkBtn.isSelected) {
+            avaliblePackage = "散件"
+        } else if (oneCaseBtn.isSelected) {
+            avaliblePackage = "整箱"
+        }
+        
+        let data: [AnyHashable: Any] = [
+            "packageType": avaliblePackage,
+            "serviceType": availableService,
+            "itemInfo":  ["weight": self.itemWeightTextField.text, "size": self.itemSizeTextField.text, "generalInfo": self.itemNameTextfield.text],
+            "travelInfo": ["fromCountry": self.countryFromTextField.text, "fromCity": self.cityFromTextField.text, "toCountry": self.countryToTextField.text, "toCity": self.cityToTextField.text, "latestLimitTime": self.dateLatestTextField.text, "earliestLimitTIme": self.dateEarliestTextField.text],
+            "weChat": self.weChatTextField.text ?? "",
+            "phoneNumber" : self.phoneTextField.text ?? "",
+            "comments" : self.commentsTextView.text ?? "",
+            "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
+        ]
+        requestRef.updateData(data) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document does not exist")
+                
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

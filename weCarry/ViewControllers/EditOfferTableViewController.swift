@@ -22,6 +22,9 @@ class EditOfferTableViewController: UITableViewController,  UIPickerViewDelegate
     @IBOutlet weak var oneCaseBtn: UIButton!
     @IBOutlet weak var onebulkBtn: UIButton!
     @IBOutlet weak var leftWeightTextFiled: UITextField!
+    @IBOutlet weak var weChatTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var commentsTextView: UITextView!
     
     var fromCountryPicker: UIPickerView! = UIPickerView()
     var toCountryPicker: UIPickerView! = UIPickerView()
@@ -241,25 +244,33 @@ class EditOfferTableViewController: UITableViewController,  UIPickerViewDelegate
             let offerRef = self.db.collection("offerListing").document(self.selectedOfferId)
             offerRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    offerRef.updateData([
-                        "avaliblePackage": ["可带散件": self.onebulkBtn.isSelected, "可带整箱": self.oneCaseBtn.isSelected],
-                        "avalibleService": ["代买物品": self.buyBtn.isSelected, "代免税店": self.taxFreeBtn.isSelected, "代收淘宝": self.taobaoBtn.isSelected],
-                        "leftWeight":  self.leftWeightTextFiled.text ?? "",
-                        "travelInfo": ["fromCountry": self.fromCountryTextField.text, "fromCity": self.fromCityTextField.text, "toCountry": self.toCountryTextField.text, "toCity": self.toCityTextField.text, "time": self.dateTextField.text],
-                        "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
-                    ]) { err in
-                        if let err = err {
-                            print("Error adding document: \(err)")
-                        } else {
-                            print("Document does not exist")
-                            
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
+                    self.updateDatabase(offerRef)
                     
                 } else {
                     print("Document does not exist")
                 }
+            }
+        }
+    }
+    
+    func updateDatabase(_ offerRef : DocumentReference) {
+        let data: [AnyHashable: Any] = [
+            "avaliblePackage": ["可带散件": self.onebulkBtn.isSelected, "可带整箱": self.oneCaseBtn.isSelected],
+            "avalibleService": ["代买物品": self.buyBtn.isSelected, "代免税店": self.taxFreeBtn.isSelected, "代收淘宝": self.taobaoBtn.isSelected],
+            "leftWeight":  self.leftWeightTextFiled.text ?? "",
+            "travelInfo": ["fromCountry": self.fromCountryTextField.text, "fromCity": self.fromCityTextField.text, "toCountry": self.toCountryTextField.text, "toCity": self.toCityTextField.text, "time": self.dateTextField.text],
+            "weChat": weChatTextField.text ?? "",
+            "phoneNumber" : phoneTextField.text ?? "",
+            "comments" : commentsTextView.text ?? "",
+            "userInfo": ["userId":  UserDefaults.standard.string(forKey: "userId"), "userName":  UserDefaults.standard.string(forKey: "nickName")]
+        ];
+        offerRef.updateData(data) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document does not exist")
+                
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
